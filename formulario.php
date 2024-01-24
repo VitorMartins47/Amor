@@ -2,10 +2,6 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Verifica se a opção foi selecionada
     if (isset($_POST["opcao"])) {
-        // Dados do Firebase
-        $databaseURL = "https://amor-df38d-default-rtdb.firebaseio.com/";
-        $token = "1708570800000";  // Token de autenticação do Firebase
-
         // Dados a serem enviados para o Firebase
         $data = [
             'opcao' => $_POST["opcao"]
@@ -15,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $json_data = json_encode($data);
 
         // URL do Firebase Realtime Database
-        $firebaseURL = $databaseURL . '/Presente/opcao';
+        $firebaseURL = 'https://amor-df38d-default-rtdb.firebaseio.com/opcoes.json';
 
         // Configuração do cURL
         $ch = curl_init($firebaseURL);
@@ -24,8 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
             'Content-Type: application/json',
-            'Content-Length: ' . strlen($json_data),
-            'Authorization: Bearer ' . $token
+            'Content-Length: ' . strlen($json_data)
         ]);
 
         // Executa a requisição cURL
