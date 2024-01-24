@@ -1,0 +1,12 @@
+body {
+    background-image: url("assets/Presente.gif");
+    background-color: #cccccc;
+   }
+
+.center {
+    background-color: #5a1354;
+    border: 5px solid;
+    margin: auto;
+    width: 50%;
+    padding-left: 10px;
+  }
